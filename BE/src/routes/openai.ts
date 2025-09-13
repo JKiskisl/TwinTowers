@@ -43,21 +43,4 @@ router.post("/ask", async (req: Request, res: Response) => {
   }
 });
 
-
 export default router;
-
-
-
-curl https://api.perplexity.ai/chat/completions \
--H "Content-Type: application/json" \
--H "Authorization: Bearer $SONAR_API_KEY" \
--d '{
-"model": "sonar-pro",
-"messages": [
-{
-  "role": "user",
-  "content": "What were the results of the 2025 French Open Finals?"
-}
-],
-"stream": true
-}'| jq
