@@ -1,4 +1,5 @@
 import { Router, Request, Response } from "express";
+import { instructions } from "../static files/instructions";
 import OpenAI from "openai";
 
 const router = Router();
@@ -22,11 +23,15 @@ router.post("/ask", async (req: Request, res: Response) => {
     const response = await client.chat.completions.create({
       model: "sonar-pro",
       messages: [
-        { role: "system", content: "Be precise and concise." },
+        {
+          role: "system",
+          content: instructions,
+        },
         { role: "user", content: prompt },
       ],
       temperature: 0.2,
       max_tokens: 1000,
+      // stream: true // optional: enable if you want streaming
     });
 
     const answer = response.choices?.[0]?.message?.content ?? "No response";
@@ -38,4 +43,21 @@ router.post("/ask", async (req: Request, res: Response) => {
   }
 });
 
+
 export default router;
+
+
+
+curl https://api.perplexity.ai/chat/completions \
+-H "Content-Type: application/json" \
+-H "Authorization: Bearer $SONAR_API_KEY" \
+-d '{
+"model": "sonar-pro",
+"messages": [
+{
+  "role": "user",
+  "content": "What were the results of the 2025 French Open Finals?"
+}
+],
+"stream": true
+}'| jq

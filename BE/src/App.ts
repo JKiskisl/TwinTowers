@@ -8,7 +8,7 @@ const port = 3000;
 // Middleware
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: ["http://localhost:3000", "http://localhost:4000"],
   })
 );
 app.use(express.json());
