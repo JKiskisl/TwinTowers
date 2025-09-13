@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    // Basic
+    "target": "ES2020", // Modern Node supports ES2020+
+    "module": "CommonJS", // Node.js standard module system
+    "rootDir": "./src", // Source folder
+    "outDir": "./dist", // Output folder after build
+    "strict": true, // Enable all strict type-checking
+    "esModuleInterop": true, // Allow default import of CommonJS modules
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true, // Skip type checking of node_modules
+    "resolveJsonModule": true, // Allow importing JSON files
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "sourceMap": true, // Useful for debugging
+    "declaration": true, // Generates .d.ts files
+    "declarationMap": true, // Maps for declaration files
+
+    // Node.js specific
+    "types": ["node"], // Include Node.js type definitions
+    "lib": ["ES2020"] // JS built-in libraries
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
+}
