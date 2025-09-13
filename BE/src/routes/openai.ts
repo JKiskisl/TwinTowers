@@ -6,7 +6,7 @@ const router = Router();
 
 // Initialize OpenAI client
 const client = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY, // use env variable for security
+  apiKey: process.env.OPENAI_API_KEY,
   baseURL: "https://api.perplexity.ai",
 });
 
