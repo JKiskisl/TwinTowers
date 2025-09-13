@@ -1,1 +1,12 @@
-// Main App.ts
+import express, { Request, Response } from "express";
+
+const app = express();
+const port = 3000;
+
+app.get("/healthy", (req: Request, res: Response) => {
+  res.send("healthy!");
+});
+
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
