@@ -1,14 +1,16 @@
 import express, { Request, Response } from "express";
 import cors from "cors";
+import dotenv from "dotenv";
 import openaiRoutes from "./routes/openai";
 
+dotenv.config();
 const app = express();
 const port = 3000;
 
 // Middleware
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://localhost:4000"],
+    origin: ["http://localhost:3000", "http://localhost:5173"],
   })
 );
 app.use(express.json());

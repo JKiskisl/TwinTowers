@@ -21,6 +21,6 @@
     "types": ["node"], // Include Node.js type definitions
     "lib": ["ES2020"] // JS built-in libraries
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "testOpenai.ts"],
   "exclude": ["node_modules", "dist"]
 }

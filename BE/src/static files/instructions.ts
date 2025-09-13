@@ -8,10 +8,6 @@ Execute a full Procurement Intelligence analysis for the company: {company_name}
 
 Your mission is to generate a two-part response:
 
-A strictly formatted, minified JSON object containing verifiable company data.
-
-A concise, analytical "Procurement Opportunity Brief" that interprets the JSON data, highlighting high-potential opportunities for suppliers.
-
 A concise, analytical "Procurement Opportunity Brief" that interprets the JSON data, highlighting high-potential opportunities for suppliers.
 
 PHASE 1: RESEARCH & DATA EXTRACTION
@@ -51,61 +47,6 @@ Material-Product Link: If their top products are industrial enclosures made of p
 Outsourcing Logic: If the company produces finished electromechanical devices but has no stated metalworking capabilities, it is highly probable that they outsource all metal stamping, CNC machining, and die-casting. This represents a primary procurement opportunity.
 
 Strategic Clues: Does their latest Sustainability/ESG report mention a goal to increase the use of recycled plastics by 30% by 2030? This is a critical entry point for a supplier of certified recycled polymers. Did they just announce a new factory in Mexico? They will need everything from construction services to machinery to new local raw material supply chains.
-
-PHASE 3: OUTPUT GENERATION
-You must generate the output in two distinct parts as specified below.
-
-PART 1: Minified JSON Data
-You must only output valid, minified JSON that strictly adheres to the following schema. Never invent facts. If information is unknown, unverified, or contradictory, the value must be null and the corresponding confidence score should be lowered.
-
-JSON
-
-{
-  "company": {
-    "legal_name": "...",
-    "known_as": "...",
-    "domain": "...",
-    "vat_id": "...",
-    "hq_location": {"city":"...","state_region":"...","country":"..."},
-    "locations": [{"type":"manufacturing_plant|warehouse|rd_center|office","city":"...","country":"..."}],
-    "size_signals": {"employees": "approx_int|null", "revenue": "currency_string|null", "public_ticker": "null|TICKER"},
-    "industry_tags": ["...","..."],
-    "product_categories": ["...","..."],
-    "manufacturing_profile": {
-      "in_house_processes": ["e.g., injection molding, PCB assembly, SMT, CNC"],
-      "outsourced_processes_inferred": ["e.g., metal stamping, die casting"],
-      "key_materials_inferred": ["e.g., ABS, Polycarbonate, Stainless Steel 304, Copper"],
-      "certifications": ["ISO 9001","ISO 13485","IATF 16949","..."],
-      "quality_links": ["https://...pdf"]
-    },
-    "supplier_ops": {
-      "vendor_portal_url": "https://...|null",
-      "supplier_code_of_conduct_url": "https://...|null",
-      "rfp_or_tender_page_url": "https://...|null",
-      "esg_report_url": "https://...|null"
-    },
-    "notable_clients_or_partners": ["..."],
-    "news_last_12m": [
-      {"headline":"...","url":"https://...","date":"YYYY-MM-DD", "procurement_implication": "e.g., New factory requires capital equipment and construction services."}
-    ],
-    "contacts_public": [
-      {"role":"Procurement|Sourcing|Buyer|Vendor Management","name":"...","email":"public@only.com","source":"https://..."}
-    ]
-  },
-  "sources": [
-    {"label":"Company - About","url":"https://..."},
-    {"label":"Annual Report 2024","url":"https://..."},
-    {"label":"Trade Press Article","url":"https://..."}
-  ],
-  "field_confidence": {
-    "hq_location": 0.9,
-    "manufacturing_profile": 0.6,
-    "outsourced_processes_inferred": 0.4
-  },
-  "generated_at_utc": "YYYY-MM-DDTHH:mm:ssZ"
-}
-PART 2: Procurement Opportunity Brief
-Directly following the JSON object, provide a concise, well-structured analysis using Markdown. This brief is the human-readable interpretation of your findings.
 
 Markdown
 
