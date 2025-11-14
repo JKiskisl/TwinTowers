@@ -1,37 +1,31 @@
-import React from "react";
-import Container from "@mui/material/Container";
-import Box from "@mui/material/Box";
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Index from "./pages/Index";
+import Explore from "./pages/Explore";
+import Profile from "./pages/Profile";
+import NotFound from "./pages/NotFound";
 
-import SearchBar from "./components/SearchBar";
-import Header from "./components/Header";
-import ChatBox from "./components/ChatBox";
+const queryClient = new QueryClient();
 
-const App: React.FC = () => {
-  return (
-    <Container
-      maxWidth={false}
-      sx={{
-        py: 6,
-        px: 2,
-        minHeight: "100vh",
-        backgroundColor: "transparent",
-      }}
-    >
-      <Box
-        sx={{
-          maxWidth: 700,
-          mx: "auto",
-          display: "flex",
-          flexDirection: "column",
-          gap: 4,
-        }}
-      >
-        <SearchBar />
-        <Header />
-        <ChatBox />
-      </Box>
-    </Container>
-  );
-};
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <TooltipProvider>
+      <Toaster />
+      <Sonner />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Index />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/profile/:username" element={<Profile />} />
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </TooltipProvider>
+  </QueryClientProvider>
+);
 
 export default App;
